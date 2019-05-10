@@ -2,82 +2,47 @@
 ```
 > Focus on having lots of in class exercises.
 
-
 > DONT teach everything, let the students investigate topics on their own aswell!
 
-
 > Focus on how to read documentation, google answers and google errors!!
+
+> Teach towards the students being able to solve the homework
 ```
+
+Remember to add the code you wrote in the class to the relevant class branch's class work folder. If the branch has not been created just create and push it :) If you dont have access, write to one from the core team. You can see an example below!
 
 To find examples of what teachers have taught before go to the class branches in the classwork folder, Fx [class 07](https://github.com/HackYourFuture-CPH/JavaScript/tree/class07/JavaScript1/Week1/classwork)
 
-For exercises https://www.codewars.com is a good site.
+If you find anything that could be improved then please create a pull request! We welcome changes, so please get involved if you have any ideas!!!
 
 ---
-
-- Arrays continued
-    - Pop, push, shift, unshift
-      - The longest of the word pairs unshift, push makes the array longer!
-    - length
-    - indexOf - Let the students investigate this
-    - No map, filter or reduce
 - Objects
     - Access properties two ways: .keyname and [keyname]
-    - Key value
+    - Key - value
     - Array of objects
     - Let the students explain iterating an array of objects
     - Use real world examples (users, products, houselistings)
-- [Code inspiration arrays and objects](#arrays-and-objects)
-- [Codewar exercises](codewar-exercises)
+    - [Code inspiration](#objects)
+- Arrays continued
+    - `Pop`, `push`, `shift`, `unshift`
+      - Let students investigate `shift` and `unshift`
+      - The longest of the word pairs unshift, push makes the array longer!
+    - `includes` - Let the students investigate this
+    - Looping through an array
+    - No `forEach`, `map`, `filter` or `reduce`
+    - [Code inspiration](#arrays)
+- [Codewar exercises](#codewar-exercises)
 - Call stack
   - Used for figuring code flow in js! Where does my function go when it is done here.
   - http://latentflip.com/loupe
-  - [Exercise](#call-stack)
+  - [Code inspiration](#call-stack)
+  - [Exercise](#call-stack-1)
 
 ## Code inspiration
 
-### Arrays and objects
-
+### Objects
 ```js
-// one way to have multiple data about a student is with an array
-// for each piece of data
-var studentNames = [
-  'Fowad',
-  'Emil',
-  'Zoey'
-]
-
-var studentAges = [
-  32,
-  25,
-  28
-]
-
-console.log(studentNames)
-console.log(studentAges)
-
-// Another, more ergonomic way is with objects
-var students = [
-  { name: 'Fowad', age: 32 },
-  { name: 'Emil', age: 25, teacher: true },
-  { name: 'Zoey', age: 28 }
-]
-
-console.log(students)
-// We can access properties with `.`
-console.log(students[0].name)
-
-// One object that we have seen before
-var Math = {
-  random: function () {
-    return 42
-  },
-  round: function (x) {
-  }
-}
-
-
-var person = {
+const user = {
   name: 'Emil',
   age: 25,
   role: 'Teacher',
@@ -88,21 +53,19 @@ var person = {
   }
 }
 
-console.log(person)
+console.log(user)
 
 // Add new property
-person.lastname = 'Bay'
+user.lastname = 'Bay'
 
-console.log(person)
+console.log(user)
 
-delete person.lastname
+delete user.lastname
 
-console.log(person)
+console.log(user)
 
-console.log(person.hobbies.favourite)
+console.log(user.hobbies.favourite)
 console.log({ favourite: 'computers', sports: 'running to class' }.favourite)
-
-'Hello world'.replace('Hello', 'Hej').replace('world', 'verden')
 
 function graduatedClass (student, className) {
   if (student.classes.includes(className)) return 'Error'
@@ -110,12 +73,12 @@ function graduatedClass (student, className) {
   student.classes.push(className)
 }
 
-console.log(person)
-graduatedClass(person, 'HTML')
-console.log(person)
-graduatedClass(person, 'HTML')
+console.log(user)
+graduatedClass(user, 'HTML')
+console.log(user)
+graduatedClass(user, 'HTML')
 
-var newPerson = {
+const newUser = {
   name: '',
   age: ''
 }
@@ -132,25 +95,69 @@ console.log(students)
 
 // ways to access properties
 
-person.name
-person['name']
+user.name
+user['name']
 
-var prop = 'name'
-person[prop]
+const prop = 'name'
+user[prop]
 
-person['name'] = 'Maria'
-person[0] = 'Hello world'
+user['name'] = 'Maria'
+user[0] = 'Hello world'
 
-console.log(person)
+console.log(user)
 
-function pick (obj, prop, defaultValue) {
-  if (obj[prop]) return obj[prop]
+```
 
-  return defaultValue
+### Arrays
+
+```js
+// one way to have multiple data about a student is with an array
+// for each piece of data
+const studentNames = [
+  'Fowad',
+  'Emil',
+  'Zoey'
+]
+
+const studentAges = [
+  32,
+  25,
+  28
+]
+
+console.log(studentNames)
+console.log(studentAges)
+
+// Another, more ergonomic way is with objects
+const students = [
+  { name: 'Fowad', age: 32 },
+  { name: 'Emil', age: 25, teacher: true },
+  { name: 'Zoey', age: 28 }
+]
+
+console.log(students)
+// We can access properties with `.`
+console.log(students[0].name)
+
+for(let i = 0; i < students.length; i++) {
+  const currentStudent = students[i];
+  console.log(typeof currentStudent);
+  console.log(currentStudent.name);
 }
 
-pick(person, 'age', 'Unknown')
+students.push({ name: 'Ahmad', age: 27 });
+
+// One object that we have seen before
+const Math = {
+  random: function () {
+    return 42
+  },
+  round: function (x) {
+  }
+}
+
 ```
+
 
 ### Call stack
 ```js
@@ -169,7 +176,6 @@ function b() {
 }
 
 a();
-
 
 ```
 
